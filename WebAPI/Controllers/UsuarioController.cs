@@ -16,9 +16,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ServiceResponse<UsuarioModel>>> Login(string email, string password) 
+        public async Task<ActionResult<ServiceResponse<UsuarioModel>>> Login() 
         {
-            return Ok(await _usuarioInterface.Login(email, password));
+            return Ok(await _usuarioInterface.Login());
         }
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<List<UsuarioModel>>>> Cadastro(UsuarioModel usuario)

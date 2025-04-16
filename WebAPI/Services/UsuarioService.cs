@@ -102,20 +102,13 @@ namespace WebAPI.Services
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<UsuarioModel>> Login(string email, string password)
+        public async Task<ServiceResponse<List<UsuarioModel>>> Login()
         {
-            ServiceResponse<UsuarioModel> serviceResponse = new ServiceResponse<UsuarioModel>();
+            ServiceResponse<List<UsuarioModel>> serviceResponse = new ServiceResponse<List<UsuarioModel>>();
 
             try
             {
-                if (email == null || password == null)
-                {
-                    serviceResponse.Dados = null;
-                    serviceResponse.Sucesso = false;
-                    serviceResponse.Mensagem = "Informe dados válidos";
-                    return serviceResponse;
-                }
-                serviceResponse.Dados = _context.Usuarios.FirstOrDefault(x=>x.Email == email && x.Password == password);
+                serviceResponse.Dados = _context.Usuarios.ToList();
             }
             catch (Exception ex)
             {

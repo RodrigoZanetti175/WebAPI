@@ -4,7 +4,7 @@ namespace WebAPI.Services
 {
     public interface IUsuarioInterface
     {
-        Task<ServiceResponse<UsuarioModel>> Login(string email, string password);
+        Task<ServiceResponse<List<UsuarioModel>>> Login();
         Task<ServiceResponse<List<UsuarioModel>>> Cadastro(UsuarioModel novoUsuario);
 
         Task<ServiceResponse<List<UsuarioModel>>> Deletar(int id);
