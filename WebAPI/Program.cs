@@ -20,10 +20,10 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
-    )
-);
+    "Server=mysql;Port=3306;Database=verify;User=root;Password=senha_segura;",
+    new MySqlServerVersion(new Version(8, 0, 0)),
+    mysqlOptions => mysqlOptions.EnableRetryOnFailure()
+));
 
 var app = builder.Build();
 
